@@ -232,7 +232,7 @@ authrouter.get("/reset", async (req, res) => {
 
             const userdata = await Auth.findByIdAndUpdate({ _id: tokendata._id }, { $set: { password: newpass, token: '' } }, { new: true })
 
-            res.status(200).send("user password is updated")
+            res.status(200).send({message:"successful reset your password"})
 
         } else {
 
