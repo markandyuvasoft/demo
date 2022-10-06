@@ -99,7 +99,7 @@ authrouter.post("/register", async (req, res) => {
 
         if (userdata) {
 
-            res.status(400).send({ message: "email already exist" })
+            res.status(400).send({ message: "user already exist" })
 
         } else if (password != Cpassword) {
 
