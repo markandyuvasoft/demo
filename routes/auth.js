@@ -157,7 +157,7 @@ authrouter.post('/login', async (req, res) => {
         }
     } catch (error) {
 
-        res.status(400).send({ message: "error" })
+        res.status(400).send({ error: "error" })
     }
 
 })
@@ -182,9 +182,9 @@ authrouter.post("/update", checkauth, async (req, res, next) => {
             }
         })
 
-        res.status(200).send("successfully change your password")
+        res.status(200).send({message:"successfully change your password"})
     } else {
-        res.status(400).send("user id not found please try again")
+        res.status(400).send({error:"user id not found please try again"})
     }
 })
 
@@ -204,14 +204,14 @@ authrouter.post("/forget", async (req, res) => {
 
             sendset(userdata.name, userdata.email, randomString)
 
-            res.status(200).send("please check your mail and reset your password")
+            res.status(200).send({message:"please check your mail and reset your password"})
 
         } else {
-            res.status(400).send("email not exist")
+            res.status(400).send({error:"email not exist"})
         }
     } catch (error) {
 
-        res.status(400).send("error please try again")
+        res.status(400).send({error:"error please try again"})
     }
 })
 
@@ -236,7 +236,7 @@ authrouter.get("/reset", async (req, res) => {
 
         } else {
 
-            res.status(401).send("expire your link send again forget requiest")
+            res.status(401).send({error:"expire your link send again forget requiest"})
         }
     } catch (error) {
 
